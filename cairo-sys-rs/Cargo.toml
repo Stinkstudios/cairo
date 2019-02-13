@@ -27,15 +27,21 @@ libc = "0.2"
 
 [dependencies.glib]
 optional = true
-version = "0.6.0"
+version = "0.6.1"
+git = "https://github.com/stinkstudios/glib"
+tag = "0.6.1"
 
 [dependencies.glib-sys]
 optional = true
-version = "0.7.0"
+version = "0.7.1"
+git = "https://github.com/stinkstudios/sys"
+tag = "0.7.1"
 
 [dependencies.gobject-sys]
 optional = true
-version = "0.7.0"
+version = "0.7.1"
+git = "https://github.com/stinkstudios/sys"
+tag = "0.7.1"
 
 [dependencies.x11]
 optional = true
