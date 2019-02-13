@@ -32,7 +32,7 @@ fn find(package_name: &str, shared_libs: &[&str]) -> Result<(), Error> {
 
     if let Ok(lib_dir) = env::var("GTK_LIB_DIR") {
         for lib_ in shared_libs.iter() {
-            println!("cargo:rustc-link-lib=dylib={}", lib_);
+            println!("cargo:rustc-link-lib=staticlib={}", lib_);
         }
         println!("cargo:rustc-link-search=native={}", lib_dir);
         return Ok(());
@@ -52,7 +52,7 @@ fn find(package_name: &str, shared_libs: &[&str]) -> Result<(), Error> {
         Ok(library) => {
             if hardcode_shared_libs {
                 for lib_ in shared_libs.iter() {
-                    println!("cargo:rustc-link-lib=dylib={}", lib_);
+                    println!("cargo:rustc-link-lib=staticlib={}", lib_);
                 }
                 for path in library.link_paths.iter() {
                     println!("cargo:rustc-link-search=native={}", path.to_str().unwrap());
@@ -62,7 +62,7 @@ fn find(package_name: &str, shared_libs: &[&str]) -> Result<(), Error> {
         }
         Err(Error::EnvNoPkgConfig(_)) | Err(Error::Command { .. }) => {
             for lib_ in shared_libs.iter() {
-                println!("cargo:rustc-link-lib=dylib={}", lib_);
+                println!("cargo:rustc-link-lib=staticlib={}", lib_);
             }
             Ok(())
         }
